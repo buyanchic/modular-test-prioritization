@@ -1,0 +1,18 @@
+{
+  "name": "author_example",
+  "_comment": "Авторский иллюстративный пример: 5 модульных тестов, 8 покрываемых сущностей (ветвей), 4 дефекта. Стоимости и история отказов подобраны так, чтобы учёт стоимости менял итоговый порядок по сравнению с классическим additional greedy.",
+  "entities": ["e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8"],
+  "tests": [
+    { "id": "T1", "cost": 1.0, "history": 0.10, "covers": ["e1", "e2", "e3"] },
+    { "id": "T2", "cost": 3.0, "history": 0.60, "covers": ["e1", "e2", "e3", "e4", "e5", "e6"] },
+    { "id": "T3", "cost": 1.0, "history": 0.30, "covers": ["e4", "e7"] },
+    { "id": "T4", "cost": 2.0, "history": 0.05, "covers": ["e5", "e6", "e7", "e8"] },
+    { "id": "T5", "cost": 0.5, "history": 0.40, "covers": ["e2", "e8"] }
+  ],
+  "faults": [
+    { "id": "F1", "detected_by": ["T1", "T2"], "severity": 1.0 },
+    { "id": "F2", "detected_by": ["T3"],       "severity": 1.0 },
+    { "id": "F3", "detected_by": ["T2", "T4"], "severity": 1.0 },
+    { "id": "F4", "detected_by": ["T5"],       "severity": 1.0 }
+  ]
+}

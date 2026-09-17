@@ -1,0 +1,24 @@
+{
+  "name": "rothermel2001",
+  "_comment": "Эталонный (сторонний) пример. Матрица «тест x дефект» из примера, приведённого в статье G. Rothermel, R. H. Untch, C. Chu, M. J. Harrold. Prioritizing Test Cases for Regression Testing // IEEE TSE, 2001, 27(10), 929-948 (Fig. 1). Набор из 5 тестов (A..E) и 10 дефектов. Опубликованные значения APFD: порядок A-B-C-D-E = 50%, E-D-C-B-A = 64%, C-E-B-A-D = 84%.",
+  "entities": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10"],
+  "tests": [
+    { "id": "A", "cost": 1.0, "history": 0.0, "covers": ["f1", "f2"] },
+    { "id": "B", "cost": 1.0, "history": 0.0, "covers": ["f3", "f4"] },
+    { "id": "C", "cost": 1.0, "history": 0.0, "covers": ["f1", "f2", "f3", "f4", "f5", "f6", "f7"] },
+    { "id": "D", "cost": 1.0, "history": 0.0, "covers": ["f5"] },
+    { "id": "E", "cost": 1.0, "history": 0.0, "covers": ["f8", "f9", "f10"] }
+  ],
+  "faults": [
+    { "id": "f1",  "detected_by": ["A", "C"] },
+    { "id": "f2",  "detected_by": ["A", "C"] },
+    { "id": "f3",  "detected_by": ["B", "C"] },
+    { "id": "f4",  "detected_by": ["B", "C"] },
+    { "id": "f5",  "detected_by": ["C", "D"] },
+    { "id": "f6",  "detected_by": ["C"] },
+    { "id": "f7",  "detected_by": ["C"] },
+    { "id": "f8",  "detected_by": ["E"] },
+    { "id": "f9",  "detected_by": ["E"] },
+    { "id": "f10", "detected_by": ["E"] }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "_comment": "Эталонный ВЫХОД для стороннего примера: значения APFD, опубликованные в статье для трёх порядков одного и того же набора, плюс порядок, который должен построить алгоритм additional greedy.",
+  "source": "G. Rothermel et al. Prioritizing Test Cases for Regression Testing. IEEE TSE 27(10), 2001",
+  "cases": [
+    { "order": ["A", "B", "C", "D", "E"], "apfd": 0.50 },
+    { "order": ["E", "D", "C", "B", "A"], "apfd": 0.64 },
+    { "order": ["C", "E", "B", "A", "D"], "apfd": 0.84 }
+  ],
+  "additional_greedy": { "order": ["C", "E", "A", "B", "D"], "apfd": 0.84 },
+  "tolerance": 1e-9
+}
