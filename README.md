@@ -1,17 +1,26 @@
-# tcp — система приоритизации модульных тестов
+# tcp — modular test prioritization system
 
-Практическое задание №2 по дисциплине «Методы тестирования программного
-обеспечения». СПбПУ, ИКНК, ВШПИ, 2026.
-Смирнова Яна Анатольевна, гр. з5130903/40002.
-Консультант и научный сотрудник Пархоменко Владимир Алексеевич, старший преподаватель КМНК СПбПУ.
+## Authors and Contributors
+The main contributors Yana Smirnova., student of SPbPU ICSC.
+The advisor and contributor Vladimir A. Parkhomenko, Senior Lecturer of SPbPU ICSC.
 
-Программа строит порядок выполнения модульных тестов, максимизирующий
-скорость выявления дефектов, и оценивает качество порядка метриками
-APFD и APFD_c.
+##Introduction
+This is a research project for hybrid unit test prioritization.
 
-Ссылки: https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1017&context=csearticles
+The program determines a unit test execution order that maximizes the speed of defect 
+detection and evaluates the quality of the order using the APFD and APFD_c metrics.
 
-## Сборка и запуск (Linux / macOS / Windows)
+##Link to source
+https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1017&context=csearticles
+
+##License
+MIT License
+Input datasets used in this repository remain under the original licenses specified by their respective authors and sources:
+
+## Warranty
+The developed software is in progress. Authors give no warranty.
+
+## Build and launch (Linux / macOS / Windows)
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
@@ -19,23 +28,23 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-Требуется только компилятор C++17 и CMake ≥ 3.16. Внешних библиотек нет.
-Python 3 нужен лишь для приёмочного теста `reference` (стандартная
-библиотека, см. `requirements.txt`).
+Only a C++17 compiler and CMake ≥ 3.16 are required. There are no external dependencies.
+Python 3 is needed only for the `reference` acceptance test (standard
+library; see `requirements.txt`).
 
-## Примеры использования
+## Usage examples
 
 ```bash
-# классический additional greedy на эталонном стороннем примере
+# classic "additional greedy" approach using a standard third-party example
 ./build/tcp --input data/rothermel2001.json --strategy additional
 
-# оценка заданного порядка (сверка с опубликованными значениями APFD)
+# evaluation of the given ordering (comparison with published APFD values)
 ./build/tcp --input data/rothermel2001.json --order C,E,B,A,D --json
 
-# гибридная эвристика с учётом стоимости и истории, с протоколом шагов
+# hybrid heuristic incorporating cost and history, with a step log
 ./build/tcp --input data/author_example.json --strategy hybrid --beta 0.5 --cost --trace
 
-# импорт того же примера из CSV
+# importing the same example from CSV
 ./build/tcp --input data/author_example.csv --strategy hybrid
 
 python3 scripts/check_reference.py --exe build/tcp \
@@ -43,25 +52,24 @@ python3 scripts/check_reference.py --exe build/tcp \
             --expected data/rothermel2001.expected.json
 ```
 
-## Структура проекта
+## Project structure
 
 ```
-CMakeLists.txt              сборка и регистрация тестов в CTest
-requirements.txt            зависимости вспомогательных скриптов
-src/tcp.hpp                 ядро: модель, загрузка CSV/JSON, алгоритмы, метрики
-src/main.cpp                консольный интерфейс
-tests/tcp_tests.cpp         модульные тесты ядра (11 групп проверок)
-scripts/check_reference.py  приёмочная сверка с эталонным выходом
-data/rothermel2001.json     эталонный вход (сторонний пример, IEEE TSE 2001)
-data/rothermel2001.expected.json  эталонный выход
-data/author_example.json    авторский иллюстративный пример
-data/author_example.csv     он же в формате CSV
+CMakeLists.txt              building and registering tests in CTest
+requirements.txt            auxiliary script dependencies
+src/tcp.hpp                 Core: model, CSV/JSON loading, algorithms, metrics
+src/main.cpp                console interface
+tests/tcp_tests.cpp         kernel unit tests (11 test groups)
+scripts/check_reference.py  acceptance verification against the reference output
+data/rothermel2001.json     reference input (external example, IEEE TSE 2001)
+data/rothermel2001.expected.json  reference output
+data/author_example.json    illustrative example by the author
+data/author_example.csv     It's in CSV format
 ```
 
-## Форматы входных данных
+## Input data formats
 
-Размерность задачи не фиксирована: число тестов и покрываемых сущностей
-определяется содержимым файла.
+The problem size is not fixed: the number of tests and covered entities is determined by the file's content.
 
 **JSON**
 
@@ -74,7 +82,7 @@ data/author_example.csv     он же в формате CSV
 }
 ```
 
-Секция `faults` необязательна; без неё метрики APFD/APFD_c не вычисляются.
+The `faults` section is optional; without it, the APFD/APFD_c metrics are not calculated.
 
 **CSV**
 
