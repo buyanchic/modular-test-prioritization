@@ -4,16 +4,16 @@
 The main contributors Yana Smirnova., student of SPbPU ICSC.
 The advisor and contributor Vladimir A. Parkhomenko, Senior Lecturer of SPbPU ICSC.
 
-##Introduction
+## Introduction
 This is a research project for hybrid unit test prioritization.
 
 The program determines a unit test execution order that maximizes the speed of defect 
 detection and evaluates the quality of the order using the APFD and APFD_c metrics.
 
-##Link to source
+## Link to source
 https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1017&context=csearticles
 
-##License
+## License
 MIT License
 Input datasets used in this repository remain under the original licenses specified by their respective authors and sources:
 
