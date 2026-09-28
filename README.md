@@ -1,4 +1,4 @@
-# tcp — modular test prioritization system
+# Modular test prioritization system
 
 ## Authors and Contributors
 The main contributors Yana Smirnova., student of SPbPU ICSC.
